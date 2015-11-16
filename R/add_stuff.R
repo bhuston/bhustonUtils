@@ -13,4 +13,3 @@
 add_stuff <- function( first, second) {
   first + second
 }
-
