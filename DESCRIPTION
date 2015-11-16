@@ -1,9 +1,10 @@
 Package: bhustonUtils
 Type: Package
-Title: Ben Huston's miscellaneous archive
+Title: Ben Huston's collection of miscellaneous R functions
 Version: 0.1
 Date: 2015-11-15
 Authors@R: person("Ben", "Huston", email = "bbhuston@gmail.com", role = c("aut", "cre"))
-Description: Package of miscellaneous R functions
+Description: Collection of miscellaneous R functions
 License: MIT
 LazyData: TRUE
+RoxygenNote: 5.0.1
