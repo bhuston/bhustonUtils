@@ -17,9 +17,7 @@ first plus second thing
 \description{
 Add stuff
 }
-\examples{
-add_stuff( 10, 3)
-add_stuff( 20, 0)
-
+\details{
+Add stuff
 }
 
