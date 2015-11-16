@@ -27,3 +27,8 @@ hello <- function() {
 #
 # devtools::check()
 
+# devtools::install_github("bhuston/bhustonUtils")
+# library(bhustonUtils)
+# bhustonUtils::hello()
+
+
