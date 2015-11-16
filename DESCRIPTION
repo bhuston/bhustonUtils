@@ -1,9 +1,9 @@
 Package: bhustonUtils
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Ben Huston's miscellaneous archive
 Version: 0.1
 Date: 2015-11-15
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Authors@R: person("Ben", "Huston", email = "bbhuston@gmail.com", role = c("aut", "cre"))
+Description: Package of miscellaneous R functions
+License: MIT
 LazyData: TRUE

@@ -14,10 +14,15 @@
 #   Test Package:              'Ctrl + Shift + T'
 
 hello <- function() {
-  print("Hello, world!")
+  print("Stuff it, world!")
 }
 
 
 #install.packages("formatR")
 #library(formatR)
+
+# devtools::install_github("bhuston/bhustonUtils")
+# library(bhustonUtils)
+# bhustonUtils::hello()
+
 
