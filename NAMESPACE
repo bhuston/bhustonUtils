@@ -3,10 +3,13 @@
 export(add_stuff)
 export(ds_puller)
 import(RDatastream)
+<<<<<<< HEAD
 import(dplyr)
 import(lubridate)
 import(rlist)
 import(stringr)
 import(tidyr)
+=======
+>>>>>>> 0bef515a15547ea77220be7e0cffb1cb18db4e0b
 importFrom(plyr,join_all)
 importFrom(plyr,ldply)
