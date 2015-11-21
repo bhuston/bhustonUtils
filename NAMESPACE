@@ -2,3 +2,6 @@
 
 export(add_stuff)
 export(ds_puller)
+import(RDatastream)
+importFrom(plyr,join_all)
+importFrom(plyr,ldply)

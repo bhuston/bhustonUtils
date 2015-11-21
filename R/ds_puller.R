@@ -17,6 +17,9 @@
 #'
 #' @return a list with two dataframes, named Data and Metadata
 #'
+#' @importFrom plyr join_all
+#' @importFrom plyr ldply
+#' @import RDatastream
 #'
 #' @export
 ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, REQUESTS = NULL ) {

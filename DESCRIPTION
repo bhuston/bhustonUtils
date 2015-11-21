@@ -6,5 +6,8 @@ Date: 2015-11-15
 Authors@R: person("Ben", "Huston", email = "bbhuston@gmail.com", role = c("aut", "cre"))
 Description: Collection of miscellaneous R functions
 License: MIT
+Imports:
+    XML,
+    RCurl
 LazyData: TRUE
 RoxygenNote: 5.0.1
