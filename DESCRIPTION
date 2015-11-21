@@ -16,5 +16,7 @@ Imports:
     RDatastream
 Depends:
     R (>= 2.14)
+    XML,
+    RCurl
 LazyData: TRUE
 RoxygenNote: 5.0.1
