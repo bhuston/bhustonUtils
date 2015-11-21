@@ -23,7 +23,7 @@ ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL)
 a list with two dataframes, named Data and Metadata
 }
 \description{
-A function for pulling Datastream data
+A function for pulling Datastream data.
 }
 \details{
 This function is a wrapper for the function ds() from
