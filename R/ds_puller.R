@@ -29,6 +29,7 @@
 #'
 #' @export
 ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL, OVERRIDE = F ) {
+
 USER <- list( username = "DS:XIMF901", password = "MONETARY" ) # enter in Datastream log-in details here
 
 # this function is just a wrapper for ds() and uses the same args
