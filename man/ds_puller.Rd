@@ -30,7 +30,7 @@ This function is a wrapper for the function ds() from
 from the package Rdatastream.
 }
 \examples{
-ds_puller( SECURITITES = c("TOTMKUS"), FIELDS = list("MV"), fromDATE = "2014-09-14", toDATE = "2015-01-31", PERIOD = "D")
+ds_puller( SECURITITES = c("TOTMKUS"), FIELDS = "MV", fromDATE = "2014-09-14", toDATE = "2015-01-31", PERIOD = "D", CURRENCY = "EUR" )
 
 }
 
