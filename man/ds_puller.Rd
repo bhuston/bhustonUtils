@@ -4,7 +4,8 @@
 \alias{ds_puller}
 \title{ds_puller}
 \usage{
-ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL)
+ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL,
+  OVERRIDE = F)
 }
 \arguments{
 \item{SECURITITES}{A vector of Datastream codes.}
@@ -18,6 +19,8 @@ ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL)
 \item{PERIOD}{Frequency of data: "D", "M", "Q," "Y".}
 
 \item{CURRENCY}{Convert to "USD", "EUR", etc? If NULL default currency is used.}
+
+\item{OVERRIDE}{Should FIELD revert to default for values "P"?}
 }
 \value{
 a list with two dataframes, named Data and Metadata
