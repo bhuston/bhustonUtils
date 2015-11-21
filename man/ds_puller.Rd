@@ -5,7 +5,7 @@
 \title{ds_puller}
 \usage{
 ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL,
-  OVERRIDE = F)
+  OVERRIDE = NULL)
 }
 \arguments{
 \item{SECURITITES}{A vector of Datastream codes.}

@@ -28,7 +28,7 @@
 #' @import RDatastream
 #'
 #' @export
-ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL, OVERRIDE = F ) {
+ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL, OVERRIDE = NULL ) {
 
 USER <- list( username = "DS:XIMF901", password = "MONETARY" ) # enter in Datastream log-in details here
 
@@ -48,7 +48,7 @@ for (i in 1:N) {
 if (length(FIELDS) > 1) { Fi <- FIELDS[i] }
   else { Fi <- FIELDS }
 
-if ( Fi %in% "P" & !OVERIDE ) { Fi <- NULL } # end if
+if ( (Fi %in% "P") & is.null(OVERRIDE) ) { Fi <- NULL } # end if
 
 if( !is.null(CURRENCY) ) { # case where custom request is passed
 
