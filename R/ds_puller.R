@@ -13,7 +13,7 @@
 #' @param CURRENCY Convert to "USD", "EUR", etc? If NULL default currency is used.
 #'
 #' @examples
-#' ds_puller( SECURITITES = c("TOTMKUS"), FIELDS = list("MV"), fromDATE = "2014-09-14", toDATE = "2015-01-31", PERIOD = "D")
+#' ds_puller( SECURITITES = c("TOTMKUS"), FIELDS = "MV", fromDATE = "2014-09-14", toDATE = "2015-01-31", PERIOD = "D", CURRENCY = "EUR" )
 #'
 #' @return a list with two dataframes, named Data and Metadata
 #'
@@ -27,7 +27,7 @@
 #' @import RDatastream
 #'
 #' @export
-ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, REQUESTS = NULL ) {
+ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL ) {
 USER <- list( username = "DS:XIMF901", password = "MONETARY" ) # enter in Datastream log-in details here
 
 # this function is just a wrapper for ds() and uses the same args
