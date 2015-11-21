@@ -2,3 +2,11 @@
 
 export(add_stuff)
 export(ds_puller)
+import(RDatastream)
+import(dplyr)
+import(lubridate)
+import(rlist)
+import(stringr)
+import(tidyr)
+importFrom(plyr,join_all)
+importFrom(plyr,ldply)

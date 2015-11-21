@@ -6,20 +6,28 @@
 #'from the package Rdatastream.
 #'
 #' @param SECURITITES A vector of Datastream codes.
-#' @param FIELDS A list of Datastream fields.
+#' @param FIELDS A vector of Datastream fields.
 #' @param fromDATE Date from which to begin data pull.
 #' @param toDATE Date to end data pull.
-#' @param PERIOD Frequency of data, possible values are "D", "M", "Q," "Y".
-#' @param REQUESTS Currently not used. Will eventually be used to pass custom Datastream API syntax to Datastream servers
+#' @param PERIOD Frequency of data: "D", "M", "Q," "Y".
+#' @param CURRENCY Convert to "USD", "EUR", etc? If NULL default currency is used.
 #'
 #' @examples
 #' ds_puller( SECURITITES = c("TOTMKUS"), FIELDS = list("MV"), fromDATE = "2014-09-14", toDATE = "2015-01-31", PERIOD = "D")
 #'
 #' @return a list with two dataframes, named Data and Metadata
 #'
+#' @importFrom plyr join_all
+#' @importFrom plyr ldply
+#' @import dplyr
+#' @import stringr
+#' @import lubridate
+#' @import tidyr
+#' @import rlist
+#' @import RDatastream
 #'
 #' @export
-ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, REQUESTS = NULL ) {
+ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL ) {
 
 USER <- list( username = "DS:XIMF901", password = "MONETARY" ) # enter in Datastream log-in details here
 
@@ -33,24 +41,34 @@ meta_data_only <- vector( "list", N ) # intialize object to store individual dat
 
 for (i in 1:N) {
 
-Fi <- FIELDS[[i]]
+Fi <- FIELDS[i]
+
 if ( Fi %in% "P" ) { Fi <- NULL } # end if
 
-if( !is.null(REQUESTS) ) { # case where custom request is passed
+if( !is.null(CURRENCY) ) { # case where custom request is passed
+
+REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~~", "CURRENCY", "~", as.Date( fromDATE ), "~:", as.Date( toDATE ), "~", "PERIOD"  )
 
 blah <- RDatastream::ds(
   user = USER,
-  requests = REQUESTS )["Data",] # extracts just the data
+  requests = REQUEST )["Data",] # extracts just the data
 
-} else {
+} else { # case with no currency conversion
+
+REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~~", "CURRENCY", "~", as.Date( fromDATE ), "~:", as.Date( toDATE ), "~", "PERIOD"  )
 
 blah <- RDatastream::ds(
   user = USER,
-  securities = SECURITITES[i],
-  fields = Fi,
-  fromDate = as.Date( fromDATE ),
-  toDate = as.Date( toDATE ),
-  period = PERIOD)["Data",] # extracts just the data
+  requests = REQUEST )["Data",] # extracts just the data
+
+
+# blah <- RDatastream::ds(
+#   user = USER,
+#   securities = SECURITITES[i],
+#   fields = Fi,
+#   fromDate = as.Date( fromDATE ),
+#   toDate = as.Date( toDATE ),
+#   period = PERIOD)["Data",] # extracts just the data
 
 } # end if/else
 
@@ -69,6 +87,7 @@ names(data_only[[i]])[-1] <- stringr::str_c( entity, " ", Fi ) %>% str_replace_a
 
 meta_data_only[[i]] <- blah[, keep2, drop = F ] %>% dplyr::distinct() # keep only unique meta data records
 
+
 } # end loop
 
 data_only <- plyr::join_all( dfs = data_only, by = "DATE", type = "full" ) # create a single dataframe of data
@@ -80,4 +99,3 @@ ds_data <- list( Data = data_only, Metadata = meta_data_only ) # return both the
 return(ds_data)
 
 }
-getwd()

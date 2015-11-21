@@ -6,5 +6,15 @@ Date: 2015-11-15
 Authors@R: person("Ben", "Huston", email = "bbhuston@gmail.com", role = c("aut", "cre"))
 Description: Collection of miscellaneous R functions
 License: MIT
+Imports:
+    plyr,
+	dplyr,
+	stringr,
+	lubridate,
+	rlist,
+	tidyr,
+    RDatastream
+Depends:
+    R (>= 2.14)
 LazyData: TRUE
 RoxygenNote: 5.0.1

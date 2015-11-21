@@ -4,20 +4,20 @@
 \alias{ds_puller}
 \title{ds_puller}
 \usage{
-ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, REQUESTS = NULL)
+ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL)
 }
 \arguments{
 \item{SECURITITES}{A vector of Datastream codes.}
 
-\item{FIELDS}{A list of Datastream fields.}
+\item{FIELDS}{A vector of Datastream fields.}
 
 \item{fromDATE}{Date from which to begin data pull.}
 
 \item{toDATE}{Date to end data pull.}
 
-\item{PERIOD}{Frequency of data, possible values are "D", "M", "Q," "Y".}
+\item{PERIOD}{Frequency of data: "D", "M", "Q," "Y".}
 
-\item{REQUESTS}{Currently not used. Will eventually be used to pass custom Datastream API syntax to Datastream servers}
+\item{CURRENCY}{Convert to "USD", "EUR", etc? If NULL default currency is used.}
 }
 \value{
 a list with two dataframes, named Data and Metadata
