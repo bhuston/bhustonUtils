@@ -47,7 +47,7 @@ if ( Fi %in% "P" ) { Fi <- NULL } # end if
 
 if( !is.null(CURRENCY) ) { # case where custom request is passed
 
-REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~~", CURRENCY, "~", as.Date( fromDATE ), "~:", as.Date( toDATE ), "~", "PERIOD"  )
+REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~~", CURRENCY, "~", as.Date( fromDATE ), "~:", as.Date( toDATE ), "~", PERIOD  )
 
 blah <- RDatastream::ds(
   user = USER,
@@ -55,7 +55,7 @@ blah <- RDatastream::ds(
 
 } else { # case with no currency conversion
 
-REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~", as.Date( fromDATE ), "~:", as.Date( toDATE ), "~", "PERIOD"  )
+REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~", as.Date( fromDATE ), "~:", as.Date( toDATE ), "~", PERIOD  )
 
 blah <- RDatastream::ds(
   user = USER,
@@ -74,6 +74,7 @@ blah <- RDatastream::ds(
 
 blah <- as.data.frame( blah, stringsAsFactors = F)
 
+if ( !is.null(CURRENCY) ) { Fi <- "P" } # end if
 if ( is.null(Fi) ) { Fi <- "P" } # end if
 
 keep1 <-  which( names(blah) %in% c("DATE", Fi) )
