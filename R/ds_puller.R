@@ -5,13 +5,14 @@
 #'This function is a wrapper for the function ds() from
 #'from the package Rdatastream.
 #'
-#' @param SECURITITES A vector of Datastream codes.
-#' @param FIELDS A vector of Datastream fields.
-#' @param fromDATE Date from which to begin data pull.
-#' @param toDATE Date to end data pull.
-#' @param PERIOD Frequency of data: "D", "M", "Q," "Y".
-#' @param CURRENCY Convert to "USD", "EUR", etc? If NULL default currency is used.
-#' @param OVERRIDE Should FIELD revert to default for values "P"?
+#' @param SECURITITES A Datastream code.
+#' @param FIELDS A Datastream field.
+#' @param fromDATE Data start date.
+#' @param toDATE Data end date.
+#' @param PERIOD Data Frequency: "D", "M", "Q," "Y".
+#' @param CURRENCY "USD", "EUR", etc? Or NULL for default
+#' @param REQUESTS_OFF Should requests not be used?
+#'
 #'
 #' @examples
 #' ds_puller( SECURITITES = c("TOTMKUS"), FIELDS = "MV", fromDATE = "2014-09-14", toDATE = "2015-01-31", PERIOD = "D", CURRENCY = "EUR" )
@@ -28,7 +29,7 @@
 #' @import RDatastream
 #'
 #' @export
-ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL, OVERRIDE = NULL ) {
+ds_puller <- function( SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL, REQUESTS_OFF = F ) {
 
 USER <- list( username = "DS:XIMF901", password = "MONETARY" ) # enter in Datastream log-in details here
 
@@ -48,7 +49,7 @@ for (i in 1:N) {
 if (length(FIELDS) > 1) { Fi <- FIELDS[i] }
   else { Fi <- FIELDS }
 
-#if ( (Fi %in% "P") & is.null(OVERRIDE) ) { Fi <- NULL } # end if
+if ( (Fi %in% "P") & REQUESTS_OFF ) { Fi <- NULL } # end if
 
 if( !is.null(CURRENCY) ) { # case where custom request is passed
 
@@ -58,6 +59,16 @@ blah <- RDatastream::ds(
   user = USER,
   requests = REQUEST )["Data",] # extracts just the data
 
+} else if (REQUESTS_OFF) { # case to skip requests
+
+blah <- RDatastream::ds(
+  user = USER,
+  securities = SECURITITES,
+  fields = Fi,
+  fromDate = as.Date( fromDATE ),
+  toDate = as.Date( toDATE ),
+  period = PERIOD)["Data",] # extracts just the data
+
 } else { # case with no currency conversion
 
 REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~", as.Date( fromDATE ), "~:", as.Date( toDATE ), "~", PERIOD  )
@@ -65,15 +76,6 @@ REQUEST <- paste0( SECURITITES[i], "(", Fi ,")", "~", as.Date( fromDATE ), "~:",
 blah <- RDatastream::ds(
   user = USER,
   requests = REQUEST )["Data",] # extracts just the data
-
-
-# blah <- RDatastream::ds(
-#   user = USER,
-#   securities = SECURITITES[i],
-#   fields = Fi,
-#   fromDate = as.Date( fromDATE ),
-#   toDate = as.Date( toDATE ),
-#   period = PERIOD)["Data",] # extracts just the data
 
 } # end if/else
 
