@@ -10,7 +10,7 @@
 #' @param fromDATE Data start date.
 #' @param toDATE Data end date.
 #' @param PERIOD Data Frequency: "D", "M", "Q," "Y".
-#' @param CURRENCY "USD", "EUR", etc? Or NULL for default
+#' @param CURRENCY "USD", "EUR", etc. or NULL for default.
 #' @param REQUESTS_OFF Should requests not be used?
 #'
 #'

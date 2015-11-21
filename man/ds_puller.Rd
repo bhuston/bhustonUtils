@@ -5,22 +5,22 @@
 \title{ds_puller}
 \usage{
 ds_puller(SECURITITES, FIELDS, fromDATE, toDATE, PERIOD, CURRENCY = NULL,
-  OVERRIDE = NULL)
+  REQUESTS_OFF = F)
 }
 \arguments{
-\item{SECURITITES}{A vector of Datastream codes.}
+\item{SECURITITES}{A Datastream code.}
 
-\item{FIELDS}{A vector of Datastream fields.}
+\item{FIELDS}{A Datastream field.}
 
-\item{fromDATE}{Date from which to begin data pull.}
+\item{fromDATE}{Data start date.}
 
-\item{toDATE}{Date to end data pull.}
+\item{toDATE}{Data end date.}
 
-\item{PERIOD}{Frequency of data: "D", "M", "Q," "Y".}
+\item{PERIOD}{Data Frequency: "D", "M", "Q," "Y".}
 
-\item{CURRENCY}{Convert to "USD", "EUR", etc? If NULL default currency is used.}
+\item{CURRENCY}{"USD", "EUR", etc. or NULL for default.}
 
-\item{OVERRIDE}{Should FIELD revert to default for values "P"?}
+\item{REQUESTS_OFF}{Should requests not be used?}
 }
 \value{
 a list with two dataframes, named Data and Metadata
