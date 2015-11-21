@@ -38,7 +38,10 @@ data_only <- vector( "list", N ) # intialize object to store individual data ser
 
 meta_data_only <- vector( "list", N ) # intialize object to store individual data series
 
+
 for (i in 1:N) {
+
+  try({ # attempt to pull data for DS series
 
 if (length(FIELDS) > 1) { Fi <- FIELDS[i] }
   else { Fi <- FIELDS }
@@ -88,6 +91,7 @@ names(data_only[[i]])[-1] <- stringr::str_c( entity, " ", Fi ) %>% str_replace_a
 
 meta_data_only[[i]] <- blah[, keep2, drop = F ] %>% dplyr::distinct() # keep only unique meta data records
 
+}) # end try segment
 
 } # end loop
 
