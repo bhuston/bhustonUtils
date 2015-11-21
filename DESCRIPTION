@@ -7,6 +7,10 @@ Authors@R: person("Ben", "Huston", email = "bbhuston@gmail.com", role = c("aut",
 Description: Collection of miscellaneous R functions
 License: MIT
 Imports:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 26d9486111d1c3f24bdf0270b4b8edfffafa6737
     plyr,
 	dplyr,
 	stringr,
@@ -16,7 +20,14 @@ Imports:
     RDatastream
 Depends:
     R (>= 2.14)
+<<<<<<< HEAD
     XML,
     RCurl
+=======
+=======
+    XML,
+    RCurl
+>>>>>>> 0bef515a15547ea77220be7e0cffb1cb18db4e0b
+>>>>>>> 26d9486111d1c3f24bdf0270b4b8edfffafa6737
 LazyData: TRUE
 RoxygenNote: 5.0.1
