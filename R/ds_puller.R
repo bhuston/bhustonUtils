@@ -48,7 +48,7 @@ for (i in 1:N) {
 if (length(FIELDS) > 1) { Fi <- FIELDS[i] }
   else { Fi <- FIELDS }
 
-if ( (Fi %in% "P") & is.null(OVERRIDE) ) { Fi <- NULL } # end if
+#if ( (Fi %in% "P") & is.null(OVERRIDE) ) { Fi <- NULL } # end if
 
 if( !is.null(CURRENCY) ) { # case where custom request is passed
 
